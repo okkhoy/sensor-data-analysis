@@ -1,0 +1,31 @@
+Detailed Description
+
+This file contains the raw sensor data acquired by a single robot during a tour of the mezzanine level of the California Science Center. The robot was equipped as follows:
+
+    Pioneer2DX (odometry)
+    Sick LMS 200 (laser range finder); mounted 8cm forward from the center of the robot, facing forwards. 
+
+The robot was teleoperated by a human operator.
+
+File Format Description
+
+The files are gzip'ed text files. Each line records the measurements made by a particular sensor at a particular point in time. Fields within lines are space delimited, and have the following format:
+
+    Client timestamp (the time at which the logging program got the data).
+    Robot IP address.
+    Robot port.
+    Sensor type ("position" or "laser")
+    Sensor index (0 for this data set)
+    Data timestamp (time at which the phenomena occurred; Unix time).
+    Sensor data (specific for each sensor type):
+        Position: pose_x pose_y pose_theta vel_x vel_y vel_theta
+        Laser: range bearing intensity range bearing intensity...[repeats] 
+
+All units are SI (meters, radians, seconds, etc).
+
+Notes:
+
+    The order of the lines in the file reflects the order in which data was recieved from the robot, as a result, the data timestamps may not be in chronolo gical order. 
+    
+Source: 
+http://cres.usc.edu/radishrepository/view-all.php
